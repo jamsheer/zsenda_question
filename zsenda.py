@@ -21,13 +21,13 @@ class Mars(object):
         try:
             with open(self.input_file, 'r') as jsonfile:
                 data = json.load(jsonfile)
-        except :
+        except:
             print "couldnt decode"
         try:
             if type(data) != dict:
                 raise Exception
             else:
-                return data    
+                return data
         except:
             print 'Not dictionary'
 
@@ -36,9 +36,9 @@ if __name__ == '__main__':
     infile = raw_input("Enter input file name ")
     outfile = raw_input("Enter output file name ")
     mars = Mars(infile, outfile)
-    print '--> Executing receive() with input file as %s'% infile
+    print '--> Executing receive() with input file as %s' % infile
     data = mars.receive()
-    print '--> Received json object as %s'% data
+    print '--> Received json object as %s' % data
 # execute send with data(dict) as argument
     print '--> Executing send() with json object as argument'
     status = mars.send(data)
