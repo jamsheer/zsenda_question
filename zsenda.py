@@ -3,10 +3,12 @@ import json
 
 class Mars(object):
     def __init__(self, input_file, output_file):
+        '''Initialize the class with necessary files'''
         self.input_file = input_file
         self.output_file = output_file
 
     def send(self, dict1):
+        '''Takes an argument of type dict. Returns 1 on success'''
         try:
             if type(dict1) != dict:
                 raise Exception
@@ -18,6 +20,7 @@ class Mars(object):
                 return 1
 
     def receive(self):
+        '''Returns json object as dictionary on success'''
         try:
             with open(self.input_file, 'r') as jsonfile:
                 data = json.load(jsonfile)
@@ -39,7 +42,6 @@ if __name__ == '__main__':
     print '--> Executing receive() with input file as %s' % infile
     data = mars.receive()
     print '--> Received json object as %s' % data
-# execute send with data(dict) as argument
     print '--> Executing send() with json object as argument'
     status = mars.send(data)
     if status == 1:
